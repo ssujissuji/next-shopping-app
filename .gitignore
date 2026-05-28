@@ -40,4 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# project management docs (personal workflow)
+docs/WORK.md
+docs/HISTORY.md
+
 /src/generated/prisma
