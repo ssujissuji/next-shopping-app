@@ -1,5 +1,6 @@
 'use server';
 
+import { redirect } from 'next/navigation';
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/db';
 import { registerSchema } from '@/schemas/auth.schema';
@@ -25,10 +26,10 @@ export async function register(formData: FormData) {
     await prisma.user.create({
       data: { email, password: hashedPassword, name },
     });
-
-    return { success: true };
   } catch (e) {
     console.error("[register]", e);
     return { error: '회원가입 중 오류가 발생했습니다' };
   }
+
+  redirect('/login');
 }

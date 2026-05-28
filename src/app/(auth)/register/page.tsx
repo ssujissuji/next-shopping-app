@@ -4,11 +4,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema, RegisterInput } from '@/schemas/auth.schema';
 
-import { useRouter } from 'next/navigation';
 import { register } from '@/actions/auth.action';
 
 export default function RegisterPage() {
-  const router = useRouter();
   const {
     register: formRegister,
     handleSubmit,
@@ -22,10 +20,7 @@ export default function RegisterPage() {
     formData.append('name', data.name);
 
     const result = await register(formData); // Server Action 호출하면서 FormData 전달 -> 이렇게 전송된 FormData는 서버 액션의 register 함수의 formData 매개변수로 전달됨
-    if (result?.error) return alert(result.error);
-
-    alert('회원가입 완료! 로그인 페이지로 이동합니다.');
-    router.push('/login');
+    if (result?.error) alert(result.error);
   };
 
   return (
