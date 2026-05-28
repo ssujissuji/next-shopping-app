@@ -6,6 +6,16 @@
 
 ## 2026-05-28
 
+### 회원가입 후 로그인 페이지 리다이렉트 버그 수정
+
+- **변경 파일**:
+  - `src/actions/auth.action.ts` — 성공 시 `return { success: true }` 제거, `redirect('/login')` 추가
+  - `src/app/(auth)/register/page.tsx` — 클라이언트 `router.push('/login')` 및 성공 `alert()` 제거
+- **원인**: 클라이언트 `router.push()`는 상황에 따라 불안정할 수 있음. Server Action 내부에서 `redirect()`를 호출하는 것이 Next.js App Router 공식 권장 방식
+- **수정**: DB 성공 후 서버 측에서 `redirect('/login')` 호출 → 안정적인 서버 주도 리다이렉트로 변경
+
+---
+
 ### CartItem 중복 key 버그 수정 — DB unique 제약 + 방어 코드
 
 - **변경 파일**:
