@@ -6,6 +6,13 @@
 
 ## 2026-05-28
 
+### 개발/배포 DB 환경 분리 (Docker PostgreSQL / Neon DB)
+- `docker-compose.yml` 생성 — PostgreSQL 15 컨테이너 (shopping_dev)
+- `.env` 수정 — Neon DB URL 주석 처리, Docker PostgreSQL URL로 교체
+- `package.json` 스크립트 추가 — `db:up`, `db:down`, `db:reset`, `vercel-build`
+
+---
+
 ### CSS 변수 충돌로 인한 텍스트 불가시 버그 수정
 
 - **변경 파일**:
