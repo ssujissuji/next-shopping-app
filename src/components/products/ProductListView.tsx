@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/db";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { ProductHero } from "@/components/products/ProductHero";
@@ -7,18 +8,31 @@ interface ProductListViewProps {
   category?: string;
 }
 
-export default async function ProductListView({ category }: ProductListViewProps) {
-  // 두 쿼리를 병렬 실행: 필터된 상품 목록 + 전체 카테고리별 집계
-  const [products, categoryCounts] = await Promise.all([
+const getProducts = unstable_cache(
+  async (category?: string) =>
     prisma.product.findMany({
       where: category ? { category } : undefined,
       orderBy: { createdAt: "desc" },
     }),
+  ["products"],
+  { revalidate: 60 }
+);
+
+const getCategoryCounts = unstable_cache(
+  async () =>
     prisma.product.groupBy({
       by: ["category"],
       _count: { id: true },
       where: { category: { not: null } },
     }),
+  ["category-counts"],
+  { revalidate: 60 }
+);
+
+export default async function ProductListView({ category }: ProductListViewProps) {
+  const [products, categoryCounts] = await Promise.all([
+    getProducts(category),
+    getCategoryCounts(),
   ]);
 
   const categoryList = categoryCounts

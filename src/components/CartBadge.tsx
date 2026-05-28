@@ -10,7 +10,9 @@ import {
 
 export function CartBadge({ userId }: { userId?: string }) {
   const items = useCartStore((state) => state.items);
-  const totalCount = useCartStore((state) => state.totalCount());
+  const totalCount = useCartStore((state) =>
+    state.items.reduce((sum, item) => sum + item.quantity, 0)
+  );
   const setCart = useCartStore((state) => state.setCart);
 
   // Hydration 에러 방지
@@ -38,10 +40,13 @@ export function CartBadge({ userId }: { userId?: string }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
-  // 동기화: 초기화 완료 후 items가 바뀔 때만 DB에 저장
+  // 동기화: 초기화 완료 후 items가 바뀔 때만 DB에 저장 (500ms 디바운싱)
   useEffect(() => {
     if (!userId || !isInitialized.current) return;
-    syncCartToDbAction(userId, items);
+    const timer = setTimeout(() => {
+      syncCartToDbAction(userId, items);
+    }, 500);
+    return () => clearTimeout(timer);
   }, [userId, items]);
 
   return (

@@ -1,4 +1,3 @@
-'use client';
 import { ProductCard } from './ProductCard';
 
 interface Product {

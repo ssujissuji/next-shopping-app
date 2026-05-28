@@ -23,12 +23,13 @@ export default async function ProductDetailPage({
   const discountRate = (product.name.length % 30) + 10;
   const originalPrice = Math.floor(product.price / (1 - discountRate / 100));
 
-  // 관련 상품 (같은 카테고리)
+  // 관련 상품 (같은 카테고리) — 카드 렌더링에 필요한 필드만 선택
   const related = await prisma.product.findMany({
     where: {
       AND: [{ category: product.category ?? undefined }, { id: { not: id } }],
     },
     take: 4,
+    select: { id: true, name: true, price: true, imageUrl: true, category: true },
   });
 
   return (
@@ -259,6 +260,7 @@ export default async function ProductDetailPage({
                       alt={p.name}
                       width={400}
                       height={500}
+                      sizes="(max-width: 768px) 50vw, 25vw"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     />
                   )}
