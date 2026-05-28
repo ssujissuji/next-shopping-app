@@ -14,17 +14,17 @@ export function ProductHero({ imageUrl, pieceCount }: ProductHeroProps) {
         {/* 텍스트 */}
         <div className="px-20 pt-24 pb-20 flex flex-col justify-between bg-bone">
           <div>
-            <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-muted">
+            <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-muted-foreground">
               FW 26 · Arrival 01 / 04
             </div>
             <h1 className="font-display text-[72px] md:text-[88px] leading-[0.96] tracking-[-0.02em] mt-7 text-ink font-normal">
               Quiet
               <br />
-              <em className="italic text-ink-soft font-light">essentials,</em>
+              <em className="italic text-muted-foreground font-light">essentials,</em>
               <br />
               worn slowly.
             </h1>
-            <p className="mt-7 max-w-[380px] text-muted text-sm leading-relaxed">
+            <p className="mt-7 max-w-[380px] text-muted-foreground text-sm leading-relaxed">
               한 계절을 넘기지 않는 옷이 아닌, 매일 다시 입고 싶은 옷. 매일(MAEIL)의
               가을·겨울 컬렉션은 따뜻한 울과 부드러운 가죽으로 구성되었습니다.
             </p>
@@ -36,7 +36,7 @@ export function ProductHero({ imageUrl, pieceCount }: ProductHeroProps) {
             </Link>
           </div>
 
-          <div className="flex gap-9 font-mono text-[11px] text-muted mt-14">
+          <div className="flex gap-9 font-mono text-[11px] text-muted-foreground mt-14">
             <span>
               Pieces
               <b className="block text-ink font-medium text-xs mt-1">

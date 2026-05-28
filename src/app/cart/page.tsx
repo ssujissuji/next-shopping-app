@@ -11,14 +11,14 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="text-center py-32">
-        <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted">
+        <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted-foreground">
           Shopping bag · 0 items
         </div>
         <h1 className="font-display text-6xl md:text-7xl leading-none tracking-tight font-normal mt-4">
           Your cart is{' '}
           <em className="italic text-ink-soft font-light">empty.</em>
         </h1>
-        <p className="text-muted mt-6 max-w-md mx-auto">
+        <p className="text-muted-foreground mt-6 max-w-md mx-auto">
           새 컬렉션을 구경하고 마음에 드는 아이템을 담아보세요.
         </p>
         <Link
@@ -33,7 +33,7 @@ export default function CartPage() {
   return (
     <div>
       <div className="pt-4 pb-2">
-        <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted">
+        <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted-foreground">
           Shopping cart · {items.length} {items.length === 1 ? 'item' : 'items'}
         </div>
         <h1 className="font-display text-6xl md:text-7xl leading-none tracking-tight font-normal mt-3.5">
@@ -41,7 +41,7 @@ export default function CartPage() {
         </h1>
 
         {/* steps */}
-        <ol className="flex gap-10 md:gap-14 border-t border-b border-line py-4 mt-9 text-[12px] tracking-[0.16em] uppercase text-muted overflow-x-auto">
+        <ol className="flex gap-10 md:gap-14 border-t border-b border-line py-4 mt-9 text-[12px] tracking-[0.16em] uppercase text-muted-foreground overflow-x-auto">
           <li className="text-ink">
             <span className="font-mono mr-2">01</span>Bag
           </li>
@@ -68,7 +68,7 @@ export default function CartPage() {
           <div className="mt-8 px-7 py-6 border border-dashed border-line flex flex-col md:flex-row md:justify-between md:items-center gap-3">
             <div>
               <div className="font-display text-xl">Add a gift note</div>
-              <div className="text-muted text-[13px] mt-1">
+              <div className="text-muted-foreground text-[13px] mt-1">
                 고급 종이에 핸드라이팅으로 동봉됩니다. 무료.
               </div>
             </div>

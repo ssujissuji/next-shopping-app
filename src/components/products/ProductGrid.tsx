@@ -22,7 +22,7 @@ export function ProductGrid({ products }: ProductGridProps) {
         <p className="font-display text-3xl text-ink-soft">
           No pieces in this edit.
         </p>
-        <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted mt-4">
+        <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted-foreground mt-4">
           Try another category
         </p>
       </div>
