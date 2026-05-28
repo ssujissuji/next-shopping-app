@@ -6,6 +6,21 @@
 
 ## 2026-05-28
 
+### CSS 변수 충돌로 인한 텍스트 불가시 버그 수정
+
+- **변경 파일**:
+  - `src/components/CartBadge.tsx` — `text-muted` → `text-ink-soft`
+  - `src/components/SignOutButton.tsx` — `text-muted` → `text-ink-soft`
+  - `src/components/products/ProductHero.tsx` — `text-muted` → `text-muted-foreground`
+  - `src/app/products/[id]/page.tsx`, `src/app/cart/page.tsx` — `text-muted` → `text-muted-foreground`
+  - `src/components/products/ProductCard.tsx`, `ProductGrid.tsx`, `ProductListView.tsx` — 동일
+  - `src/components/cart/CartItem.tsx`, `CartSummary.tsx` — 동일
+- **원인**: `globals.css` `@theme inline` 블록에서 Maeil 커스텀 토큰 `--color-muted: var(--muted-fg)`(중간 회색)가 아래에 선언된 shadcn passthrough `--color-muted: var(--muted)`(거의 흰색 bone 계열)에 덮어씌워짐. 결과적으로 `text-muted` = `oklch(0.948)` ≈ 배경색과 동일 → 텍스트 불가시
+- **증상**: 헤더 카트 배지 숫자, Logout 버튼, 히어로 섹션 본문·스탯 텍스트 등이 배경과 동화되어 보이지 않음
+- **수정**: shadcn 컨벤션에 따라 텍스트용 muted 색상은 `text-muted-foreground`(`--muted-fg` = `oklch(0.52)`) 사용으로 전체 통일
+
+---
+
 ### 회원가입 후 로그인 페이지 리다이렉트 버그 수정
 
 - **변경 파일**:

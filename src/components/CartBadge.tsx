@@ -55,7 +55,7 @@ export function CartBadge({ userId }: { userId?: string }) {
       className="text-[12px] tracking-[0.14em] uppercase text-ink hover:text-ink-soft">
       Cart
       {mounted && (
-        <sup className="ml-1 font-mono text-[9px] tracking-normal text-muted">
+        <sup className="ml-1 font-mono text-[9px] tracking-normal text-ink-soft">
           {String(totalCount).padStart(2, '0')}
         </sup>
       )}

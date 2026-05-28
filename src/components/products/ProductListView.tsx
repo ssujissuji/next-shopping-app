@@ -53,7 +53,7 @@ export default async function ProductListView({ category }: ProductListViewProps
       {/* 섹션 헤더 */}
       <div className="flex items-end justify-between mb-12 pb-6 border-b border-line">
         <div>
-          <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted">
+          <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted-foreground">
             {category ? `Filtered · ${products.length} pieces` : `New arrivals · ${totalCount} pieces`}
           </div>
           <h2 className="font-display text-4xl md:text-5xl leading-none tracking-tight mt-3 font-normal">
@@ -68,7 +68,7 @@ export default async function ProductListView({ category }: ProductListViewProps
             )}
           </h2>
         </div>
-        <div className="hidden md:flex gap-7 text-[12px] tracking-[0.14em] uppercase text-muted">
+        <div className="hidden md:flex gap-7 text-[12px] tracking-[0.14em] uppercase text-muted-foreground">
           <span>Sort · Newest</span>
           <Link href="/products" className="text-ink border-b border-ink pb-0.5">
             View all

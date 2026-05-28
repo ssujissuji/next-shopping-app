@@ -36,7 +36,7 @@ export function CartSummary() {
 
       {/* 무료배송까지 남은 금액 */}
       {subtotal < 50000 && (
-        <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-muted mt-3">
+        <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-muted-foreground mt-3">
           {(50000 - subtotal).toLocaleString("ko-KR")}원 more for free shipping
         </p>
       )}
@@ -47,7 +47,7 @@ export function CartSummary() {
           value={promo}
           onChange={(e) => setPromo(e.target.value)}
           placeholder="Promo or gift card"
-          className="flex-1 border-0 bg-transparent px-4 py-3.5 text-[13px] outline-none placeholder:text-muted"
+          className="flex-1 border-0 bg-transparent px-4 py-3.5 text-[13px] outline-none placeholder:text-muted-foreground"
         />
         <button className="px-5 text-[11px] tracking-[0.18em] uppercase text-ink">
           Apply
@@ -70,11 +70,11 @@ export function CartSummary() {
         Proceed to checkout →
       </Link>
 
-      <p className="mt-4 font-mono text-[11px] text-muted text-center">
+      <p className="mt-4 font-mono text-[11px] text-muted-foreground text-center">
         Free returns within 30 days
       </p>
 
-      <div className="mt-8 pt-6 border-t border-line flex justify-between font-mono text-[10px] tracking-[0.14em] uppercase text-muted">
+      <div className="mt-8 pt-6 border-t border-line flex justify-between font-mono text-[10px] tracking-[0.14em] uppercase text-muted-foreground">
         <span>Secure checkout</span>
         <span>VISA · MC · TOSS</span>
       </div>
@@ -101,7 +101,7 @@ function SumRow({
           accent === "olive"
             ? "text-olive"
             : muted
-            ? "text-muted"
+            ? "text-muted-foreground"
             : "text-ink-soft"
         }
       >

@@ -38,14 +38,14 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
             />
           ) : (
-            <div className="flex items-center justify-center h-full text-muted text-sm">
+            <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
               이미지 없음
             </div>
           )}
 
           {/* 좌상단 뱃지 */}
           {isSoldOut ? (
-            <span className="absolute top-3.5 left-3.5 bg-bone text-muted font-mono text-[10px] tracking-[0.12em] uppercase px-2 py-1">
+            <span className="absolute top-3.5 left-3.5 bg-bone text-muted-foreground font-mono text-[10px] tracking-[0.12em] uppercase px-2 py-1">
               Sold out
             </span>
           ) : isNew ? (
@@ -81,7 +81,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         </div>
 
         {/* 카테고리 */}
-        <div className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted">
+        <div className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted-foreground">
           {product.category ?? "Collection"}
         </div>
 
@@ -107,7 +107,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
         {/* 무료배송 (작게, 텍스트만) */}
         {product.price >= 30000 && !isSoldOut && (
-          <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-muted">
+          <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-muted-foreground">
             Free shipping · 내일 도착
           </div>
         )}

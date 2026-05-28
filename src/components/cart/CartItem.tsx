@@ -29,7 +29,7 @@ export function CartItem({ item }: CartItemProps) {
             className="object-cover"
           />
         ) : (
-          <div className="flex items-center justify-center h-full text-muted text-xs">
+          <div className="flex items-center justify-center h-full text-muted-foreground text-xs">
             없음
           </div>
         )}
@@ -37,13 +37,13 @@ export function CartItem({ item }: CartItemProps) {
 
       {/* 정보 */}
       <div className="flex flex-col gap-1.5 pt-1">
-        <span className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted">
+        <span className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted-foreground">
           {fakeCategory}
         </span>
         <h3 className="font-display text-xl md:text-[22px] font-normal leading-tight">
           {item.name}
         </h3>
-        <div className="flex gap-6 text-xs text-muted mt-1">
+        <div className="flex gap-6 text-xs text-muted-foreground mt-1">
           <span>
             Color · <b className="text-ink font-medium">{fakeColor}</b>
           </span>
@@ -74,12 +74,12 @@ export function CartItem({ item }: CartItemProps) {
             </button>
           </div>
 
-          <button className="text-[11px] tracking-[0.18em] uppercase text-muted border-b border-line pb-0.5 hover:text-ink hover:border-ink">
+          <button className="text-[11px] tracking-[0.18em] uppercase text-muted-foreground border-b border-line pb-0.5 hover:text-ink hover:border-ink">
             Save for later
           </button>
           <button
             onClick={() => removeItem(item.id)}
-            className="text-[11px] tracking-[0.18em] uppercase text-muted border-b border-line pb-0.5 hover:text-rust hover:border-rust"
+            className="text-[11px] tracking-[0.18em] uppercase text-muted-foreground border-b border-line pb-0.5 hover:text-rust hover:border-rust"
           >
             Remove
           </button>

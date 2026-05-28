@@ -35,7 +35,7 @@ export default async function ProductDetailPage({
   return (
     <>
       {/* breadcrumb */}
-      <nav className="font-mono text-[11px] tracking-[0.14em] uppercase text-muted mb-8">
+      <nav className="font-mono text-[11px] tracking-[0.14em] uppercase text-muted-foreground mb-8">
         <Link href="/" className="hover:text-ink">
           Shop
         </Link>{" "}
@@ -89,7 +89,7 @@ export default async function ProductDetailPage({
                 priority
               />
             ) : (
-              <div className="flex items-center justify-center h-full text-muted">
+              <div className="flex items-center justify-center h-full text-muted-foreground">
                 이미지 없음
               </div>
             )}
@@ -101,14 +101,14 @@ export default async function ProductDetailPage({
 
         {/* 정보 */}
         <div className="pt-2">
-          <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted">
+          <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted-foreground">
             {product.category ?? "Collection"} · Style #{product.id.slice(0, 6).toUpperCase()}
           </div>
           <h1 className="font-display text-5xl md:text-6xl leading-none tracking-tight mt-3.5 font-normal">
             {product.name}
           </h1>
 
-          <div className="flex items-center gap-3 text-xs text-muted mt-2 mb-7">
+          <div className="flex items-center gap-3 text-xs text-muted-foreground mt-2 mb-7">
             <span className="text-ink tracking-[2px]">★★★★★</span>
             <span>4.9</span>
             <span className="text-line">·</span>
@@ -138,11 +138,11 @@ export default async function ProductDetailPage({
           {/* 컬러 옵션 */}
           <div className="mt-9">
             <div className="flex justify-between items-center mb-3.5">
-              <span className="text-[11px] tracking-[0.18em] uppercase text-muted">
+              <span className="text-[11px] tracking-[0.18em] uppercase text-muted-foreground">
                 Color
                 <b className="text-ink font-medium ml-2">Default</b>
               </span>
-              <a className="font-mono text-[11px] text-muted border-b border-line cursor-pointer">
+              <a className="font-mono text-[11px] text-muted-foreground border-b border-line cursor-pointer">
                 Care guide
               </a>
             </div>
@@ -162,10 +162,10 @@ export default async function ProductDetailPage({
           {/* 사이즈 옵션 */}
           <div className="mt-9">
             <div className="flex justify-between items-center mb-3.5">
-              <span className="text-[11px] tracking-[0.18em] uppercase text-muted">
+              <span className="text-[11px] tracking-[0.18em] uppercase text-muted-foreground">
                 Size<b className="text-ink font-medium ml-2">M</b>
               </span>
-              <a className="font-mono text-[11px] text-muted border-b border-line cursor-pointer">
+              <a className="font-mono text-[11px] text-muted-foreground border-b border-line cursor-pointer">
                 Size guide ↗
               </a>
             </div>
@@ -192,7 +192,7 @@ export default async function ProductDetailPage({
             ) : (
               <button
                 disabled
-                className="w-full py-5 bg-bone-2 text-muted text-[12px] tracking-[0.22em] uppercase border border-line cursor-not-allowed"
+                className="w-full py-5 bg-bone-2 text-muted-foreground text-[12px] tracking-[0.22em] uppercase border border-line cursor-not-allowed"
               >
                 Sold out
               </button>
@@ -211,7 +211,7 @@ export default async function ProductDetailPage({
       {/* details */}
       <section className="mt-24 pt-12 border-t border-line grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-16">
         <div>
-          <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted">
+          <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted-foreground">
             Details
           </div>
           <h3 className="font-display text-4xl leading-none tracking-tight mt-3 font-normal">
@@ -236,7 +236,7 @@ export default async function ProductDetailPage({
         <section className="mt-20">
           <div className="flex items-end justify-between mb-12 pb-6 border-b border-line">
             <div>
-              <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted">
+              <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted-foreground">
                 Pairs well with
               </div>
               <h2 className="font-display text-4xl md:text-5xl leading-none tracking-tight mt-3 font-normal">
@@ -265,7 +265,7 @@ export default async function ProductDetailPage({
                     />
                   )}
                 </div>
-                <div className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted mt-3.5">
+                <div className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted-foreground mt-3.5">
                   {p.category ?? "Collection"}
                 </div>
                 <h3 className="font-display text-lg font-normal mt-1.5">{p.name}</h3>
@@ -284,7 +284,7 @@ export default async function ProductDetailPage({
 function Perk({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col gap-1">
-      <span className="text-[11px] tracking-[0.16em] uppercase text-muted">
+      <span className="text-[11px] tracking-[0.16em] uppercase text-muted-foreground">
         {label}
       </span>
       <span className="font-display text-lg text-ink">{value}</span>
@@ -295,7 +295,7 @@ function Perk({ label, value }: { label: string; value: string }) {
 function Spec({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <span className="font-mono text-[11px] tracking-[0.1em] uppercase text-muted">
+      <span className="font-mono text-[11px] tracking-[0.1em] uppercase text-muted-foreground">
         {label}
       </span>
       <br />
