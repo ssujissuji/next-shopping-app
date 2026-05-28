@@ -23,6 +23,12 @@ jobs:
       - name: 패키지 설치
         run: npm ci
 
+      - name: 실패한 마이그레이션 초기화 (있는 경우)
+        run: npx prisma migrate resolve --rolled-back 20260528064750_add_updated_at_to_product_and_order || true
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+
       - name: DB 마이그레이션 적용
         run: npx prisma migrate deploy
         env:
