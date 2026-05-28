@@ -7,9 +7,18 @@
 ## 2026-05-28
 
 ### 개발/배포 DB 환경 분리 (Docker PostgreSQL / Neon DB)
-- `docker-compose.yml` 생성 — PostgreSQL 15 컨테이너 (shopping_dev)
+- `docker-compose.yml` 생성 — PostgreSQL 15 컨테이너 (shooting_dev), 포트 5433 (로컬 5432 충돌 방지)
 - `.env` 수정 — Neon DB URL 주석 처리, Docker PostgreSQL URL로 교체
-- `package.json` 스크립트 추가 — `db:up`, `db:down`, `db:reset`, `vercel-build`
+- `package.json` 스크립트 추가 — `db:up`, `db:down`, `db:reset` (`docker compose` v2 명령어 사용)
+- `vercel-build` 스크립트 추가 — 배포 시 `prisma migrate deploy` 자동 실행
+
+### GitHub Actions Node.js 20 → 24 업그레이드
+- `ci.yml`, `deploy.yml` — `node-version: "20"` → `"24"` 변경 (6월 2일 강제 deprecated 전 선제 대응)
+
+### Product, Order 모델 updatedAt 필드 추가 및 마이그레이션 오류 수정
+- `prisma/schema.prisma` — `Product`, `Order` 모델에 `updatedAt @updatedAt` 추가
+- `migration.sql` — 기존 데이터 있는 프로덕션 DB 호환을 위해 `DEFAULT NOW()` 추가
+- `deploy.yml` — 실패한 마이그레이션 초기화 단계(`prisma migrate resolve --rolled-back`) 추가
 
 ---
 
