@@ -14,14 +14,20 @@ jobs:
       - name: 코드 체크아웃
         uses: actions/checkout@v4
 
-      - name: Node.js 20 설정
+      - name: Node.js 24 설정
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
           cache: "npm"
 
       - name: 패키지 설치
         run: npm ci
+
+      - name: 실패한 마이그레이션 초기화 (있는 경우)
+        run: npx prisma migrate resolve --rolled-back 20260528064750_add_updated_at_to_product_and_order || true
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
 
       - name: DB 마이그레이션 적용
         run: npx prisma migrate deploy
